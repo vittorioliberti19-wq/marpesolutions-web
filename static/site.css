@@ -1,0 +1,896 @@
+/* MARPE — sistema visual
+   Técnico-editorial industrial. El azul #0037B2 y la geometría ortogonal del
+   símbolo MP son el motivo que se repite en separadores, hero y numeración. */
+
+@font-face {
+  font-family: "Archivo";
+  src: url("fonts/Archivo-Variable.woff2") format("woff2-variations");
+  font-weight: 100 900;
+  font-stretch: 62% 125%;
+  font-display: swap;
+}
+@font-face {
+  font-family: "PlexSans";
+  src: url("fonts/IBMPlexSans-Variable.woff2") format("woff2-variations");
+  font-weight: 100 700;
+  font-display: swap;
+}
+@font-face {
+  font-family: "PlexMono";
+  src: url("fonts/IBMPlexMono-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-display: swap;
+}
+
+:root {
+  --azul: #0037B2;          /* azul oficial del logo MARPE */
+  --azul-osc: #002678;
+  --azul-viv: #4C86FF;      /* acento legible sobre negro */
+  --azul-tenue: #E8EEFB;
+  --negro: #0a0a0c;
+  --gris-900: #16161a;
+  --gris-600: #55555f;
+  --gris-300: #c9c9d0;
+  --gris-100: #efeef1;
+  --blanco: #ffffff;
+
+  --display: "Archivo", "Archivo Black", "Helvetica Neue", sans-serif;
+  --texto: "PlexSans", "IBM Plex Sans", system-ui, sans-serif;
+  --mono: "PlexMono", "IBM Plex Mono", ui-monospace, monospace;
+
+  --ancho: 1280px;
+  --gutter: clamp(1.25rem, 4vw, 3.5rem);
+  --barra: 4px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+body {
+  margin: 0;
+  background: var(--blanco);
+  color: var(--negro);
+  font-family: var(--texto);
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+img,
+svg {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+a {
+  color: inherit;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--display);
+  font-weight: 800;
+  line-height: 0.96;
+  letter-spacing: -0.015em;
+  text-transform: uppercase;
+  margin: 0;
+  text-wrap: balance;
+}
+h1 {
+  font-size: clamp(2.5rem, 6.5vw, 5.25rem);
+  font-stretch: 105%;
+  overflow-wrap: break-word;
+}
+h2 {
+  font-size: clamp(1.9rem, 4.2vw, 3.25rem);
+}
+h3 {
+  font-size: clamp(1.15rem, 2vw, 1.5rem);
+  letter-spacing: 0;
+}
+p {
+  margin: 0 0 1.1em;
+  text-wrap: pretty;
+}
+
+.wrap {
+  max-width: var(--ancho);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+.seccion {
+  padding-block: clamp(4rem, 9vw, 8rem);
+}
+.seccion--negro {
+  background: var(--negro);
+  color: var(--blanco);
+}
+.seccion--gris {
+  background: var(--gris-100);
+}
+
+/* ---------- motivo: trazo del símbolo MP ----------
+   Barra maestra azul + escalones descendentes: la misma lectura ortogonal
+   del logotipo, reducida a un separador de sección. */
+.barras {
+  display: flex;
+  align-items: flex-end;
+  gap: 5px;
+  height: 30px;
+  margin-bottom: 1.75rem;
+}
+.barras i {
+  width: var(--barra);
+  background: var(--azul);
+  display: block;
+  height: 100%;
+}
+.barras i:nth-child(2) {
+  height: 62%;
+  background: var(--azul);
+}
+.barras i:nth-child(3) {
+  height: 38%;
+  background: var(--gris-300);
+}
+.barras i:nth-child(4) {
+  height: 100%;
+  background: var(--negro);
+}
+.seccion--negro .barras i {
+  background: var(--azul-viv);
+}
+.seccion--negro .barras i:nth-child(3) {
+  background: var(--gris-600);
+}
+.seccion--negro .barras i:nth-child(4) {
+  background: var(--blanco);
+}
+
+.kicker {
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--azul);
+  margin: 0 0 1rem;
+}
+.seccion--negro .kicker {
+  color: var(--gris-300);
+}
+
+.lead {
+  font-size: clamp(1.06rem, 1.6vw, 1.3rem);
+  max-width: 62ch;
+  color: var(--gris-600);
+}
+.seccion--negro .lead {
+  color: var(--gris-300);
+}
+
+/* ---------- header ---------- */
+.top {
+  position: sticky;
+  top: 0;
+  z-index: 60;
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: saturate(160%) blur(10px);
+  border-bottom: 1px solid var(--gris-100);
+}
+.top__in {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  min-height: 74px;
+}
+.marca {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  margin-right: auto;
+  padding-block: 0.4rem;
+}
+.marca img {
+  height: 30px;
+  width: auto;
+  display: block;
+}
+.marca .marca--corta {
+  display: none;
+  height: 26px;
+}
+@media (max-width: 560px) {
+  .marca .marca--larga {
+    display: none;
+  }
+  .marca .marca--corta {
+    display: block;
+  }
+}
+
+.nav {
+  display: flex;
+  gap: 1.6rem;
+  align-items: center;
+}
+.nav a {
+  font-size: 0.93rem;
+  text-decoration: none;
+  color: var(--negro);
+  padding-block: 0.3rem;
+  border-bottom: 2px solid transparent;
+  white-space: nowrap;
+}
+.nav a:hover,
+.nav a[aria-current="page"] {
+  border-color: var(--azul);
+}
+
+.lang {
+  display: flex;
+  gap: 0.45rem;
+  font-family: var(--mono);
+  font-size: 0.74rem;
+}
+.lang a {
+  text-decoration: none;
+  color: var(--gris-600);
+  text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 0 0.4rem;
+}
+.lang a:hover {
+  color: var(--azul);
+}
+.lang a[aria-current="true"] {
+  color: var(--blanco);
+  background: var(--azul);
+}
+
+.menu-btn {
+  display: none;
+  background: none;
+  border: 0;
+  padding: 0.5rem;
+  cursor: pointer;
+}
+.menu-btn span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--negro);
+  margin: 5px 0;
+  transition: 0.2s;
+}
+
+@media (max-width: 980px) {
+  .menu-btn {
+    display: block;
+    order: 3;
+  }
+  .nav {
+    position: fixed;
+    inset: 74px 0 auto;
+    background: var(--blanco);
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+    padding: 1rem var(--gutter) 2rem;
+    border-bottom: 1px solid var(--gris-100);
+    transform: translateY(-120%);
+    transition: transform 0.28s ease;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+  }
+  .nav[data-open="true"] {
+    transform: translateY(0);
+  }
+  .nav a {
+    width: 100%;
+    padding-block: 0.85rem;
+    border-bottom: 1px solid var(--gris-100);
+  }
+  .nav a:hover,
+  .nav a[aria-current="page"] {
+    border-color: var(--azul);
+  }
+}
+
+/* ---------- hero ---------- */
+.hero {
+  position: relative;
+  overflow: hidden;
+  background: var(--negro);
+  color: var(--blanco);
+}
+.hero__grid {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  align-items: stretch;
+  min-height: min(78vh, 720px);
+}
+.hero__txt {
+  padding: clamp(3rem, 7vw, 6rem) 0;
+  align-self: center;
+  position: relative;
+  z-index: 2;
+  max-width: 54ch;
+  padding-right: clamp(1rem, 3vw, 2.5rem);
+}
+/* El titular se dimensiona contra su columna (~46ch), no contra el viewport:
+   con 6.5vw las palabras largas ("VÉNÉZUÉLIENNE") se salían y la imagen las tapaba. */
+/* El titular se dimensiona para que quepa la palabra más larga de los cuatro
+   idiomas ("VÉNÉZUÉLIENNE", 13 caracteres) dentro de la columna. Si se sube el
+   font-size o se estrecha .hero__txt, `overflow-wrap` parte esa palabra a la
+   mitad en francés — sin guion, porque la hifenación es manual. */
+.hero h1 {
+  font-size: clamp(2.05rem, 3.4vw, 3rem);
+  font-stretch: 94%;
+  hyphens: manual;
+  overflow-wrap: normal;
+}
+.hero__txt .kicker {
+  color: var(--gris-300);
+}
+.hero h1 {
+  margin-bottom: 1.5rem;
+}
+.hero h1 em {
+  font-style: normal;
+  color: var(--azul-viv);
+}
+.seccion--negro .kicker,
+.seccion--negro .card__num,
+.seccion--negro a:not(.btn) {
+  color: var(--azul-viv);
+}
+.hero__sub {
+  color: var(--gris-300);
+  font-size: clamp(1rem, 1.45vw, 1.2rem);
+  max-width: 46ch;
+}
+.hero__img {
+  position: relative;
+  z-index: 1;
+  margin-right: calc(var(--gutter) * -1);
+}
+.hero__img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(0.25) contrast(1.06);
+}
+.hero__img::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    var(--negro) 0%,
+    rgba(10, 10, 12, 0.55) 26%,
+    rgba(10, 10, 12, 0) 62%
+  );
+}
+.hero__stats {
+  display: flex;
+  gap: 2.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.16);
+  padding-top: 1.75rem;
+  margin-top: 2.25rem;
+}
+.hero__stats b {
+  font-family: var(--display);
+  font-size: clamp(1.7rem, 3vw, 2.4rem);
+  display: block;
+  line-height: 1;
+}
+.hero__stats span {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gris-300);
+}
+
+@media (max-width: 860px) {
+  .hero__grid {
+    grid-template-columns: 1fr;
+    min-height: 0;
+  }
+  .hero__img {
+    margin: 0 calc(var(--gutter) * -1);
+    height: 300px;
+    order: -1;
+  }
+  .hero__img::after {
+    background: linear-gradient(
+      180deg,
+      rgba(10, 10, 12, 0.35),
+      var(--negro) 96%
+    );
+  }
+  .hero__stats {
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+  .hero__txt {
+    max-width: none;
+    padding-bottom: 5.5rem;
+  }
+}
+
+/* ---------- botones ---------- */
+.btns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 2rem;
+}
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--mono);
+  font-size: 0.82rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.95rem 1.5rem;
+  text-decoration: none;
+  border: 2px solid transparent;
+  background: var(--azul);
+  color: var(--blanco);
+  transition:
+    background 0.18s,
+    transform 0.18s;
+}
+.btn:hover {
+  background: var(--azul-osc);
+  transform: translateY(-2px);
+}
+.btn--ghost {
+  background: transparent;
+  border-color: currentColor;
+  color: inherit;
+}
+.btn--ghost:hover {
+  background: var(--blanco);
+  color: var(--negro);
+  transform: translateY(-2px);
+}
+.seccion:not(.seccion--negro) .btn--ghost:hover {
+  background: var(--negro);
+  color: var(--blanco);
+}
+
+/* ---------- tarjetas ---------- */
+.grid {
+  display: grid;
+  gap: 1.5rem;
+}
+.grid--2 {
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+}
+.grid--3 {
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+}
+.grid--4 {
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+}
+
+.card {
+  border: 1px solid var(--gris-100);
+  background: var(--blanco);
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  transition:
+    border-color 0.2s,
+    transform 0.2s;
+}
+.card:hover {
+  border-color: var(--azul);
+  transform: translateY(-3px);
+}
+.card h3 {
+  margin-bottom: 0.2rem;
+}
+.card p {
+  color: var(--gris-600);
+  font-size: 0.96rem;
+  margin: 0;
+}
+.card__num {
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  color: var(--azul);
+  letter-spacing: 0.1em;
+}
+.seccion--negro .card {
+  background: var(--gris-900);
+  border-color: #262630;
+}
+.seccion--negro .card p {
+  color: var(--gris-300);
+}
+
+/* ---------- lista de servicios ---------- */
+.linea {
+  display: grid;
+  grid-template-columns: 90px 1fr 1fr;
+  gap: clamp(1.5rem, 4vw, 3.5rem);
+  align-items: start;
+  padding-block: clamp(2.5rem, 5vw, 4rem);
+  border-top: 1px solid var(--gris-100);
+}
+.linea__num {
+  font-family: var(--display);
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  color: var(--gris-100);
+  line-height: 0.8;
+}
+.linea ul {
+  margin: 1rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+.linea li {
+  position: relative;
+  padding-left: 1.4rem;
+  margin-bottom: 0.7rem;
+  color: var(--gris-600);
+  font-size: 0.97rem;
+}
+.linea li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.62em;
+  width: 8px;
+  height: 2px;
+  background: var(--azul);
+}
+.linea img {
+  width: 100%;
+  aspect-ratio: 4/3;
+  object-fit: cover;
+  filter: grayscale(0.2);
+}
+@media (max-width: 860px) {
+  .linea {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+  .linea__num {
+    font-size: 2.5rem;
+  }
+  .linea img {
+    order: -1;
+  }
+}
+
+/* ---------- tablas técnicas ---------- */
+.tabla-wrap {
+  overflow-x: auto;
+  margin-bottom: 2.5rem;
+  border: 1px solid var(--gris-100);
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.93rem;
+  min-width: 420px;
+}
+caption {
+  text-align: left;
+  font-family: var(--mono);
+  font-size: 0.74rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--blanco);
+  background: var(--azul);
+  padding: 0.7rem 1rem;
+}
+th,
+td {
+  text-align: left;
+  padding: 0.72rem 1rem;
+  border-bottom: 1px solid var(--gris-100);
+}
+th {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gris-600);
+  background: var(--gris-100);
+}
+td:first-child {
+  font-family: var(--mono);
+  font-weight: 500;
+  color: var(--azul);
+  white-space: nowrap;
+}
+tbody tr:hover {
+  background: #fafaff;
+}
+.spec {
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  color: var(--gris-600);
+  margin: -1.75rem 0 2.5rem;
+}
+
+/* ---------- faq ---------- */
+.faq details {
+  border-bottom: 1px solid var(--gris-100);
+}
+.faq summary {
+  cursor: pointer;
+  padding: 1.4rem 2.5rem 1.4rem 0;
+  position: relative;
+  list-style: none;
+  font-family: var(--display);
+  font-size: clamp(1.02rem, 1.7vw, 1.28rem);
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+}
+.faq summary::-webkit-details-marker {
+  display: none;
+}
+.faq summary::after {
+  content: "+";
+  position: absolute;
+  right: 0.3rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: var(--mono);
+  font-size: 1.5rem;
+  color: var(--azul);
+  transition: transform 0.2s;
+}
+.faq details[open] summary::after {
+  content: "−";
+}
+.faq details p {
+  color: var(--gris-600);
+  max-width: 72ch;
+  padding-bottom: 1.5rem;
+  margin: 0;
+}
+
+/* ---------- aviso ---------- */
+.aviso {
+  border-left: var(--barra) solid var(--azul);
+  background: var(--azul-tenue);
+  padding: 1.25rem 1.5rem;
+  font-size: 0.95rem;
+  color: var(--gris-600);
+}
+.aviso strong {
+  color: var(--negro);
+}
+
+/* ---------- cifras ---------- */
+.cifra b {
+  font-family: var(--display);
+  font-size: clamp(2.2rem, 4.5vw, 3.4rem);
+  display: block;
+  line-height: 1;
+  color: var(--azul);
+}
+.cifra span {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gris-600);
+}
+.seccion--negro .cifra b {
+  color: var(--blanco);
+}
+.seccion--negro .cifra span {
+  color: var(--gris-300);
+}
+
+/* ---------- contacto ---------- */
+.dato {
+  border-top: 1px solid var(--gris-100);
+  padding-block: 1.15rem;
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 1rem;
+}
+.dato dt {
+  font-family: var(--mono);
+  font-size: 0.74rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gris-600);
+}
+.dato dd {
+  margin: 0;
+}
+.dato a {
+  color: var(--azul);
+}
+@media (max-width: 620px) {
+  .dato {
+    grid-template-columns: 1fr;
+    gap: 0.25rem;
+  }
+}
+
+/* ---------- marcas ---------- */
+.marcas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2.5rem;
+  align-items: center;
+  font-family: var(--display);
+  font-size: 1.3rem;
+  letter-spacing: 0.04em;
+  color: var(--gris-600);
+}
+
+/* ---------- footer ---------- */
+.pie {
+  background: var(--negro);
+  color: var(--gris-300);
+  padding-block: clamp(3rem, 6vw, 5rem) 2rem;
+  font-size: 0.92rem;
+}
+.pie__grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr 1fr;
+  gap: 2.5rem;
+}
+.pie h4 {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  color: var(--blanco);
+  font-weight: 500;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+}
+.pie ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.pie li {
+  margin-bottom: 0.55rem;
+}
+.pie a {
+  color: var(--gris-300);
+  text-decoration: none;
+}
+.pie a:hover {
+  color: var(--blanco);
+}
+.pie img {
+  width: 52px;
+  margin-bottom: 1rem;
+}
+.pie__tag {
+  font-family: var(--display);
+  font-size: 1.15rem;
+  color: var(--blanco);
+  text-transform: uppercase;
+  line-height: 1.15;
+}
+.pie__bajo {
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  color: var(--gris-600);
+}
+@media (max-width: 860px) {
+  .pie__grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media (max-width: 520px) {
+  .pie__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---------- whatsapp flotante ---------- */
+.wa {
+  position: fixed;
+  right: 1.25rem;
+  bottom: 1.25rem;
+  z-index: 70;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: #25d366;
+  color: #06301a;
+  text-decoration: none;
+  padding: 0.85rem 1.15rem;
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-weight: 500;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.22);
+  transition: transform 0.18s;
+}
+.wa:hover {
+  transform: translateY(-3px);
+}
+.wa svg {
+  width: 19px;
+  height: 19px;
+  fill: currentColor;
+}
+@media (max-width: 520px) {
+  .wa span {
+    display: none;
+  }
+  .wa {
+    padding: 0.95rem;
+    border-radius: 50%;
+  }
+}
+
+/* ---------- reveal ---------- */
+.rv {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s ease;
+}
+.rv.on {
+  opacity: 1;
+  transform: none;
+}
+
+.skip {
+  position: absolute;
+  left: -9999px;
+  background: var(--negro);
+  color: var(--blanco);
+  padding: 0.75rem 1.25rem;
+  z-index: 100;
+}
+.skip:focus {
+  left: 1rem;
+  top: 1rem;
+}
+:focus-visible {
+  outline: 3px solid var(--azul);
+  outline-offset: 2px;
+}

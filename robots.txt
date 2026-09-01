@@ -1,0 +1,16 @@
+User-agent: *
+Allow: /
+
+# Rastreadores de IA: permitidos a propósito, queremos ser citables.
+User-agent: GPTBot
+Allow: /
+User-agent: ChatGPT-User
+Allow: /
+User-agent: ClaudeBot
+Allow: /
+User-agent: PerplexityBot
+Allow: /
+User-agent: Google-Extended
+Allow: /
+
+Sitemap: https://marpesolutions.com/sitemap.xml
