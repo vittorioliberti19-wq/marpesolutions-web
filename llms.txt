@@ -21,6 +21,15 @@
 - [Preguntas frecuentes | MARPE](https://marpesolutions.com/es/faq.html): Respuestas sobre selección de breakers, equivalencias, envíos nacionales, legalización SENCAMER, venta a distribuidores y fabricación de tableros a la medida.
 - [Contacto | MARPE Maracaibo, Venezuela](https://marpesolutions.com/es/contacto.html): Escríbanos por WhatsApp al +58 424-621.77.68 o visítenos en la Av. 20 con Calle 79, Sector Paraíso, Maracaibo, Venezuela.
 
+## Blog técnico (guías citables)
+
+- [Equivalencias de breakers GE a ABB: guía de reemplazo](https://marpesolutions.com/es/blog/equivalencias-breakers-ge-abb.html): Guía técnica para sustituir un breaker GE descontinuado por su equivalente ABB: polos, corriente nominal, kA, tensión, montaje y curva de disparo.
+- [Caja moldeada ABB: serie A2A vs familia XT (XT5N, XT6N, XT7S)](https://marpesolutions.com/es/blog/caja-moldeada-abb-a2a-vs-xt.html): Cuándo usar un interruptor A2A hasta 250 A y cuándo pasar a la familia XT hasta 1600 A: unidades de disparo TMF, TMA y Ekip, terminales y montaje.
+- [Cómo elegir un breaker termomagnético para su tablero](https://marpesolutions.com/es/blog/como-elegir-un-breaker.html): Amperaje, polos, capacidad de interrupción, curva y coordinación con el conductor: los cinco criterios para seleccionar un breaker en sistemas 120/240 V.
+- [Tableros NLAB, NAB, CCB y TLM: diferencias y cuándo usar cada uno](https://marpesolutions.com/es/blog/tipos-de-tableros-nlab-nab-ccb-tlm.html): Qué distingue a los tableros TLM, NLAB, NAB y CCB: tipo de breaker que aceptan, corrientes típicas y dónde aplica cada uno en la instalación.
+- [Mantenimiento de celdas de media tensión: pruebas y frecuencia](https://marpesolutions.com/es/blog/mantenimiento-celdas-media-tension.html): Pruebas del mantenimiento de celdas MT y tableros BT: aislamiento, inyección de corriente, tiempos de apertura y cierre, simultaneidad y enclavamientos.
+- [Qué es la legalización SENCAMER en material eléctrico](https://marpesolutions.com/es/blog/que-es-la-legalizacion-sencamer.html): Qué significa que un breaker o tablero esté legalizado ante SENCAMER, qué verifica el organismo y qué riesgos tiene el producto sin certificación.
+
 ## Idiomas
 
 - Español: https://marpesolutions.com/es/

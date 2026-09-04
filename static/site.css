@@ -797,6 +797,145 @@ tbody tr:hover {
   filter: grayscale(0.2);
 }
 
+/* ---------- blog ---------- */
+.post-card {
+  border: 1px solid var(--gris-100);
+  background: var(--blanco);
+  overflow: hidden;
+  transition: border-color 0.2s, transform 0.2s;
+}
+.post-card:hover {
+  border-color: var(--azul);
+  transform: translateY(-3px);
+}
+.post-card a {
+  color: inherit;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.post-card img {
+  width: 100%;
+  aspect-ratio: 16/9;
+  object-fit: cover;
+  filter: grayscale(0.2);
+  display: block;
+}
+.post-card__txt {
+  padding: 1.5rem 1.75rem 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  flex: 1;
+}
+.post-card__txt p {
+  color: var(--gris-600);
+  font-size: 0.96rem;
+  margin: 0;
+}
+.post-card__mas {
+  margin-top: auto;
+  padding-top: 0.75rem;
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  color: var(--azul);
+}
+.post__meta {
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  color: var(--gris-600);
+  margin: 0;
+}
+.post__cab .post__meta {
+  margin-top: 1.5rem;
+}
+.post__cab h1 {
+  font-size: clamp(1.9rem, 3.4vw, 3rem);
+  max-width: 24ch;
+  margin-top: 1rem;
+}
+.post__cab .kicker a {
+  color: inherit;
+  text-decoration: none;
+}
+.post__resumen {
+  margin-top: 1.25rem;
+  max-width: 62ch;
+}
+.post__cab .banda {
+  aspect-ratio: 21/9;
+  margin-top: 2.5rem;
+}
+.post__cuerpo {
+  max-width: 72ch;
+}
+.post__cuerpo h2 {
+  font-size: clamp(1.35rem, 2.2vw, 1.75rem);
+  margin: 2.5rem 0 1rem;
+}
+.post__cuerpo h3 {
+  font-size: 1.1rem;
+  margin: 2rem 0 0.75rem;
+}
+.post__cuerpo p,
+.post__cuerpo li {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--gris-800, #222);
+}
+.post__cuerpo p {
+  margin: 0 0 1.25rem;
+}
+.post__cuerpo ul,
+.post__cuerpo ol {
+  padding-left: 1.4rem;
+  margin: 0 0 1.5rem;
+}
+.post__cuerpo li {
+  margin-bottom: 0.5rem;
+}
+.post__cuerpo p a,
+.post__cuerpo li a,
+.post__cuerpo td a {
+  color: var(--azul);
+}
+.grid--posts {
+  grid-template-columns: repeat(3, 1fr);
+}
+@media (max-width: 960px) {
+  .grid--posts {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 600px) {
+  .grid--posts {
+    grid-template-columns: 1fr;
+  }
+}
+.post__cuerpo table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0 0 1.5rem;
+  font-size: 0.95rem;
+}
+.post__cuerpo th,
+.post__cuerpo td {
+  text-align: left;
+  padding: 0.6rem 0.75rem;
+  border-bottom: 1px solid var(--gris-100);
+  vertical-align: top;
+}
+.post__cuerpo th {
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.post__cuerpo .btns {
+  margin-top: 2.5rem;
+}
+
 /* ---------- marcas ---------- */
 .marcas {
   display: flex;
