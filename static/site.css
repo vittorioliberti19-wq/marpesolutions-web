@@ -797,6 +797,17 @@ tbody tr:hover {
   filter: grayscale(0.2);
 }
 
+.hero__kicker {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+}
+.hero__abb {
+  height: 34px;
+  width: auto;
+  display: block;
+}
+
 /* ---------- blog ---------- */
 .post-card {
   border: 1px solid var(--gris-100);
