@@ -930,6 +930,28 @@ tbody tr:hover {
   transform: none;
 }
 
+@media (min-width: 861px) {
+  .pie__bajo {
+    padding-right: 11rem;
+  }
+}
+.pie__dev {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: inherit;
+  text-decoration: none;
+  opacity: 0.85;
+}
+.pie__dev:hover {
+  opacity: 1;
+}
+.pie__dev img {
+  height: 18px;
+  width: auto;
+  display: block;
+}
+
 .skip {
   position: absolute;
   left: -9999px;
