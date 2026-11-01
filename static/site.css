@@ -1068,6 +1068,10 @@ tbody tr:hover {
   .pie__grid {
     grid-template-columns: 1fr;
   }
+  .pie__bajo .onebite-credit {
+    flex-basis: 100%;
+    justify-content: center;
+  }
 }
 
 /* ---------- whatsapp flotante ---------- */
